@@ -54,16 +54,17 @@ void shuffle(){
  
 //===================================================================
 void loop() {
-
 // Suffle/ Reset
-shuffle();
-
-
-// Check the order
+  for (size_t i = 0; i < n - 1; i++){
+      size_t j = random(0, n - i);
+      int t = LEDpins[i];
+      LEDpins[i] = LEDpins[j];
+      LEDpins[j] = t;
+  }
 if(digitalRead(Switch) == LOW){
+// Check the order
  while ((Series[0] != LEDpins[0]) || (Series[1] != LEDpins[1]) || (Series[2] != LEDpins[2])){
-  
-    
+     
     // Feedback
  if (Modestate = digitalRead(Modeswitch) == LOW){
   for (int j = 0; j<3; j++){
@@ -96,7 +97,7 @@ if(digitalRead(Switch) == LOW){
    Serial.print(Series[0]);
    Serial.print(Series[1]);
    Serial.println(Series[2]);}
+buzzerforcorrect();
 }
- buzzerforcorrect();
 }
 
